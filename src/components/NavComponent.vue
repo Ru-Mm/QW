@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import {ref} from 'vue';
 import {useRouter} from "vue-router";
+import SunMoon from "./SunMoon.vue";
 
 const nav_search = ref({
-      input3: '',
-    })
+  input3: '',
+})
 
 const router = useRouter()
 
@@ -14,16 +15,30 @@ const doMenuClick = (path?: string) => {
     path: path
   })
 }
+
+// 主题状态管理
+const isDarkTheme = ref(false);
+
+// 处理主题切换
+const handleThemeChange = (status: boolean) => {
+  isDarkTheme.value = status;
+  // 更新 body 的 class
+  if (isDarkTheme.value) {
+    document.body.classList.add('dark-theme');
+  } else {
+    document.body.classList.remove('dark-theme');
+  }
+};
 </script>
 <template>
   <!--  导航  -->
-  <div id="NavComposition">
+  <div id="NavComposition" :class="{ 'dark-theme': isDarkTheme }" style="border: 1px solid red">
     <!--导航左侧-->
-    <div class="nav_left">
+    <div class="nav_left" style="border: 1px solid red">
       <!--   首页 -->
-      <el-dropdown @click="doMenuClick('/')">
+      <el-dropdown>
         <el-button style="border: none; background-color: transparent;"
-        > 首页
+                   @click="doMenuClick('/')"> 首页
         </el-button>
 
       </el-dropdown>
@@ -44,18 +59,20 @@ const doMenuClick = (path?: string) => {
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item @click="doMenuClick('/wisdoms/wisdom/note')">学习笔记</el-dropdown-item>
-            <el-dropdown-item @click="doMenuClick('/wisdoms/wisdom/book')">读书/书籍笔记</el-dropdown-item>
+            <el-dropdown-item @click="doMenuClick('/wisdoms/wisdom/book')">书籍</el-dropdown-item>
             <el-dropdown-item @click="doMenuClick('/wisdoms/wisdom/project')">项目合集</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
       <!--    航迹-->
       <el-dropdown placement="bottom">
-        <el-button @click="doMenuClick('/voyage_Traces/voyage_Traces')"> 航迹</el-button>
+        <el-button @click="doMenuClick('/track/track')"> 航迹</el-button>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item @click="doMenuClick('/voyage_Traces/voyage_Traces/photo_collection')">相册合集</el-dropdown-item>
-            <el-dropdown-item @click="doMenuClick('/voyage_Traces/voyage_Traces/map_completion')">点亮地图</el-dropdown-item>
+            <el-dropdown-item @click="doMenuClick('/track/track/photo_collection')">相册合集
+            </el-dropdown-item>
+            <el-dropdown-item @click="doMenuClick('/track/track/map_completion')">点亮地图
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -75,7 +92,7 @@ const doMenuClick = (path?: string) => {
     </div>
 
     <!--    导航右侧-->
-    <div class="nav_right">
+    <div class="nav_right" style="border: 1px solid purple">
       <!--      搜索框-->
       <div class="search_input">
         <el-input
@@ -90,6 +107,10 @@ const doMenuClick = (path?: string) => {
           </template>
         </el-input>
 
+        <div>
+          <SunMoon @onStatus="handleThemeChange"/>
+        </div>
+
       </div>
 
     </div>
@@ -103,29 +124,13 @@ const doMenuClick = (path?: string) => {
 }
 
 .nav_left {
-  width: 600px;
+  width: auto;
   justify-content: space-between; /* 均匀分布 */
   align-items: center; /* 垂直居中 */
   padding: 15px 20px; /* 左右内边距 */
-  margin-left: 340px;
+  margin-left: 100px;
 }
 
-.el-button {
-  border: none;
-  border-radius: 7px;
-  font-size: 19px;
-  flex: 1;
-  margin: 0 5px;
-}
-
-/* 确保下拉菜单按钮样式一致 */
-.el-dropdown {
-  flex: 1;
-  max-width: 100px;
-  margin: 0 5px;
-  border: none;
-  background-color: transparent;
-}
 
 .el-dropdown .el-button {
   width: 100%;
@@ -134,26 +139,67 @@ const doMenuClick = (path?: string) => {
   background-color: transparent;
 }
 
-/* 移除下拉菜单的边框和背景 */
-.el-dropdown-menu {
-  border: none;
-  background-color: transparent;
-}
-
-.el-dropdown-item {
-  border: none;
-  background-color: transparent;
-}
 
 /*  导航右侧  */
 .nav_right {
-  max-width: 400px;
+  max-width: 700px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
+/*  搜索框  */
 .search_input {
   padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
 }
 
+/* 深色主题样式 - 统一背景色 #202020 */
+.dark-theme {
+  background-color: #202020 !important;
+  color: #ffffff;
+}
 
+.dark-theme .nav_left .el-button {
+  color: #ffffff !important;
+  background-color: transparent;
+}
+
+.dark-theme .nav_right {
+  background-color: #202020;
+}
+
+.dark-theme .el-input {
+  background-color: #202020;
+}
+
+.dark-theme .el-input__inner {
+  background-color: #202020;
+  color: #ffffff;
+  border-color: #555555;
+}
+
+.dark-theme .el-input__wrapper {
+  background-color: #202020;
+  border-color: #555555;
+}
+
+.dark-theme .el-input__inner::placeholder {
+  color: #999999;
+}
+
+.dark-theme .el-dropdown-menu {
+  background-color: #202020;
+  border-color: #555555;
+}
+
+.dark-theme .el-dropdown-item {
+  color: #ffffff;
+}
+
+.dark-theme .el-dropdown-item:hover {
+  background-color: #555555;
+}
 </style>

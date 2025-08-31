@@ -61,17 +61,17 @@ const router = createRouter({
         {
             path: '/voyage_Traces/voyage_Traces',
             name: 'voyage_Traces',
-            component: () => import('../views/voyage_Traces/Voyage_TracesView.vue'),
+            component: () => import('../views/track/TrackView.vue'),
             children: [
                 {
-                    path: 'photo_collection',
-                    name: 'photo collection',
-                    component: () => import('../views/voyage_Traces/Photo_CollectionView.vue')
+                    path: 'album',
+                    name: 'album',
+                    component: () => import('../views/track/album.vue')
                 },
                 {
                     path: 'map_completion',
                     name: 'map_completion',
-                    component: () => import('../views/voyage_Traces/Map_Completion.vue')
+                    component: () => import('../views/track/album.vue')
                 },
             ]
         },
@@ -80,19 +80,19 @@ const router = createRouter({
         {
             path: '/tools',
             name: 'tools',
-            component: () => import('../views/visions/ToolsView.vue'),
+            component: () => import('../views/Tools/ToolView.vue'),
         },
 
         /*   关于   */
         {
             path: '/about',
             name: 'about',
-            component: () => import('../views/visions/AboutView.vue'),
+            component: () => import('../views/About/AboutView.vue'),
             children: [
                 {
                     path: 'milestones',
                     name: 'milestones',
-                    component: () => import('../views/visions/AboutView.vue'),
+                    component: () => import('../views/About/milestones.vue'),
                 }
             ]
         },

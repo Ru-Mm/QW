@@ -14,5 +14,6 @@ declare module 'vue' {
     NavComponents: typeof import('./src/components/NavComponents.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SunMoon: typeof import('./src/components/SunMoon.vue')['default']
   }
 }
