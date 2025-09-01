@@ -107,6 +107,7 @@ const handleThemeChange = (status: boolean) => {
           </template>
         </el-input>
 
+<!--     系统主题切换  -->
         <div>
           <SunMoon @onStatus="handleThemeChange"/>
         </div>
@@ -156,7 +157,7 @@ const handleThemeChange = (status: boolean) => {
   gap: 60px;
 }
 
-/* 深色主题样式 - 统一背景色 #202020 */
+/* 深色主题样式  */
 .dark-theme {
   background-color: #202020 !important;
   color: #ffffff;

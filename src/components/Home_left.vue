@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // 尝试从 public 目录加载图片
-const pfpImage = '/pfp.jpg'
+const pfpImage = 'public/images/avaters/pfp.jpg';
 </script>
 
 <template>
