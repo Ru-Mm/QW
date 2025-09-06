@@ -1,7 +1,11 @@
 // axios基础封装
 import axios from 'axios'
 
+<<<<<<< HEAD
 import { ElMessage } from 'element-plus';
+=======
+import {message} from "ant-design-vue";
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
 
 
 
@@ -39,7 +43,11 @@ httpInstance.interceptors.request.use((config) => {
 
         if (!token) {
             const error = new Error('未提供token，请先登录');
+<<<<<<< HEAD
             ElMessage.error(error.message);
+=======
+            message.error(error.message);
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
             return Promise.reject(error);
         }
         console.log(token);
@@ -52,7 +60,11 @@ httpInstance.interceptors.request.use((config) => {
     return config;
 }, (error) => {
     // 请求配置错误的统一处理
+<<<<<<< HEAD
     ElMessage.error('请求配置错误');
+=======
+    message.error('请求配置错误');
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
     return Promise.reject(error);
 });
 
@@ -62,11 +74,19 @@ httpInstance.interceptors.response.use(
         return response;
     },
     (error) => {
+<<<<<<< HEAD
             if (error.response?.status === 401) {
         ElMessage.error("登录已过期，请重新登录");
     } else {
         ElMessage.error(error.response?.data?.message || "请求失败");
     }
+=======
+        if (error.response?.status === 401) {
+            message.error("登录已过期，请重新登录");
+        } else {
+            message.error(error.response?.data?.message || "请求失败");
+        }
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
         return Promise.reject(error);
     }
 );

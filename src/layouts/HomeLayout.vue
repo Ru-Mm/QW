@@ -2,6 +2,7 @@
 
 import NavComponent from "../components/NavComponent.vue";
 import Home_left from "../components/Home_left.vue";
+<<<<<<< HEAD
 import { ref, onMounted } from 'vue';
 import { getCurrentUser } from '../utils/auth';
 
@@ -13,6 +14,8 @@ onMounted(() => {
 });
 
 // 移除未使用的函数，因为退出登录功能已经移到NavComponent中
+=======
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
 </script>
 
 <template>

@@ -1,20 +1,29 @@
 <script setup lang="ts">
+<<<<<<< HEAD
 import {ref, onMounted} from 'vue';
 import {useRouter} from "vue-router";
 import SunMoon from "./SunMoon.vue";
 import { getCurrentUser, clearLoginStatus } from '../utils/auth';
+=======
+import {ref} from 'vue';
+import {useRouter} from "vue-router";
+import SunMoon from "./SunMoon.vue";
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
 
 const nav_search = ref({
   input3: '',
 })
 
 const router = useRouter()
+<<<<<<< HEAD
 const username = ref('')
 
 onMounted(() => {
   // 获取当前登录用户信息
   username.value = getCurrentUser() || '';
 })
+=======
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
 
 /*   点击跳转  */
 const doMenuClick = (path?: string) => {
@@ -23,12 +32,15 @@ const doMenuClick = (path?: string) => {
   })
 }
 
+<<<<<<< HEAD
 // 处理退出登录
 const handleLogout = () => {
   clearLoginStatus();
   router.push('/');
 }
 
+=======
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
 // 主题状态管理
 const isDarkTheme = ref(false);
 
@@ -51,7 +63,11 @@ const handleThemeChange = (status: boolean) => {
       <!--   首页 -->
       <el-dropdown>
         <el-button style="border: none; background-color: transparent;"
+<<<<<<< HEAD
                    @click="doMenuClick('/home')"> 首页
+=======
+                   @click="doMenuClick('/')"> 首页
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
         </el-button>
 
       </el-dropdown>
@@ -82,7 +98,11 @@ const handleThemeChange = (status: boolean) => {
         <el-button @click="doMenuClick('/track/track')"> 航迹</el-button>
         <template #dropdown>
           <el-dropdown-menu>
+<<<<<<< HEAD
             <el-dropdown-item @click="doMenuClick('/track/track/album')">相册合集
+=======
+            <el-dropdown-item @click="doMenuClick('/track/track/photo_collection')">相册合集
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
             </el-dropdown-item>
             <el-dropdown-item @click="doMenuClick('/track/track/map_completion')">点亮地图
             </el-dropdown-item>
@@ -98,7 +118,11 @@ const handleThemeChange = (status: boolean) => {
         <el-button @click="doMenuClick('/about')"> 关于</el-button>
         <template #dropdown>
           <el-dropdown-menu>
+<<<<<<< HEAD
             <el-dropdown-item @click="doMenuClick('/about/milestones')">开发里程碑</el-dropdown-item>
+=======
+            <el-dropdown-item @click="doMenuClick('/about/our_journey')">开发里程碑</el-dropdown-item>
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -120,17 +144,24 @@ const handleThemeChange = (status: boolean) => {
           </template>
         </el-input>
 
+<<<<<<< HEAD
         <!--     系统主题切换  -->
+=======
+<!--     系统主题切换  -->
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
         <div>
           <SunMoon @onStatus="handleThemeChange"/>
         </div>
 
+<<<<<<< HEAD
         <!-- 用户信息和退出登录 -->
         <div class="user-info">
           <span class="welcome-text">欢迎，{{ username }}</span>
           <el-button type="danger" size="small" @click="handleLogout">退出登录</el-button>
         </div>
 
+=======
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
       </div>
 
     </div>
@@ -141,9 +172,12 @@ const handleThemeChange = (status: boolean) => {
 /* 导航左侧  */
 #NavComposition {
   display: flex;
+<<<<<<< HEAD
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+=======
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
 }
 
 .nav_left {
@@ -154,6 +188,10 @@ const handleThemeChange = (status: boolean) => {
   margin-left: 100px;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
 .el-dropdown .el-button {
   width: 100%;
   margin: 0;
@@ -161,6 +199,10 @@ const handleThemeChange = (status: boolean) => {
   background-color: transparent;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
 /*  导航右侧  */
 .nav_right {
   max-width: 700px;
@@ -177,6 +219,7 @@ const handleThemeChange = (status: boolean) => {
   gap: 60px;
 }
 
+<<<<<<< HEAD
 /* 用户信息样式 */
 .user-info {
   display: flex;
@@ -189,6 +232,8 @@ const handleThemeChange = (status: boolean) => {
   color: #333;
 }
 
+=======
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
 /* 深色主题样式  */
 .dark-theme {
   background-color: #202020 !important;
@@ -235,8 +280,11 @@ const handleThemeChange = (status: boolean) => {
 .dark-theme .el-dropdown-item:hover {
   background-color: #555555;
 }
+<<<<<<< HEAD
 
 .dark-theme .welcome-text {
   color: #ffffff;
 }
+=======
+>>>>>>> e72ccc6f06a7d77e2501ee008d62e752835c718c
 </style>
